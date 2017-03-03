@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>exercice 2</title>
+  </head>
+  <body>
+    <label for="genre">Sexe : </label><select class="genre" id="genre" name="genre"> <!-- Choix du sexe -->
+      <option value="feminin">Féminin</option>
+      <option value="masculin">Masculin</option>
+    </select>
+    <label for="salaire">Salaire : </label><input type="text" name="salaire" value="" id="salaire"><!-- Pour le salaire -->
+    <label for="enfant">Enfant : </label><input type="text" name="enfant" value="" id="enfant"><!-- Pour le nombre d'enfant -->
+    <button type="button" name="button" id="summit">valider</button>
+    <script src="jquery-2.2.4.js"></script>
+    <script >
+    $(document).ready(function () {
+      $('#summit').click(function () {
+        var sexe = $('#genre').val(); // Variable pour sexe
+        var salaire = parseFloat($('#salaire').val()); // Variable pour le salaire
+        var nbChild = $('#enfant').val(); // Variable pour le nombre d'enfant
+        var charge = 0.30; //18% de charges
+        if (isNaN(salaire) === true || isNaN(nbChild) === true || salaire == '' || nbChild == '' ) {
+          alert('Veuillez entrer un nombre');
+        }else {
+          nbChild = parseInt(nbChild);
+          if (sexe == 'feminin' && nbChild >= 4) {
+            charge -= 0.04;
+          }else if (sexe == 'feminin' && nbChild == 3) { //Si l'employé a 3 enfants à charge, il reçoit 1% de réduction.
+            charge -= 0.03
+          }else if (sexe == 'feminin' || nbChild >= 4) {
+            charge -= 0.02;
+          }else if (nbChild == 3) {
+            charge -= 0.01;
+          }
+          var result = salaire - (salaire * charge) // Calcul pour le résultat
+          alert('votre salaire après deduction des charge est de: ' + result);
+        }
+      });
+    });
+    </script>
+  </body>
+</html>

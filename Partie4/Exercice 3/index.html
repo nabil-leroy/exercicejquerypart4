@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>exercice 3</title>
+  </head>
+  <body>
+    <label for="name">Nom</label><input type="text" name="name" id="name" value="">
+    <label for="firstname">Prénom</label><input type="text" name="firstname" id="firstname" value="">
+    <label for="mail">mail</label><input type="email" name="mail" id="mail" value="">
+    <label for="phone">téléphone</label><input type="phone" name="phone" id="phone" value="">
+    <button type="button" name="button">cliquez</button>
+    <script src="jquery-2.2.4.js"></script>
+    <script>
+    $(document).ready(function () {
+      $('button').click(function() { // fonction clique
+        var mail = $('#mail'); //Variable mail
+        var name = $('#name'); // Variable nom
+        var firstname = $('#firstname'); //Variable prénom
+        var phone = $('#phone'); // Variable Phone
+        if(mail.val().match(/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/) && name.val().match(/^[a-z._-]+$/) && firstname.val().match(/^[a-z._-]+$/) && phone.val().match(/^[0-9]+$/)){ // Pour les touches utiliser pour chaque catégories
+            alert('Vos informations sont valide');
+        }else {
+          alert('Vos informations ne sont pas valide');
+        }
+      });
+    });
+    </script>
+  </body>
+</html>

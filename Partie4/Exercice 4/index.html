@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>exercice 4</title>
+</head>
+<body>
+  <label for="name"></label><input type="text" name="name" placeholder ="Nom" id="name">
+  <label for="firstName"></label><input type="text" name="firstName" placeholder ="Prénom" id="firstName">
+  <label for="birthday"></label><input type="text" name="birthday" id="birthday" placeholder=" Date d'anniversaire : ex: 00/00/0000"><br/>
+  <label for="birthplace"></label><input type="text" name="birthplace" placeholder ="Lieu de naissance" id="birthplace">
+  <label for="job"></label><input type="text" name="job" placeholder ="Emploie" id="job">
+  <label for="societe"></label><input type="text" name="societe" placeholder ="Société" id="societe">
+  <button type="button" name="button" id="validez">validez</button>
+</form>
+<p></p>
+<script src="jquery-2.2.4.js"></script>
+<script>
+$(document).ready(function () {
+  $('#validez').click(function() {
+    var name = $('#name').val();  // variables qui recupere les valeurs du nom
+    var firstName = $('#firstName').val();// variables qui recupere les valeurs de prénom
+    var birthday = $('#birthday').val();// variables qui recupere les valeurs de la date de naissance
+    var birthplace = $('#birthplace').val();// variables qui recupere les valeurs du lieu de naissance
+    var job = $('#job').val();
+    var societe = $('#societe').val();
+    if(name.match( /[a-z-]+$/) &&  firstName.match(/[a-z-]+$/) && birthday.match(/[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/) && birthplace.match(/[a-z-]+$/) && job.match(/[a-z-]+$/)){
+      $('p').text(name +' ' + firstName + ', né le ' + birthday + ' à ' + birthplace + ', actuellement ' + job + ' chez   ' + societe);
+    }else {
+      alert("Ce n'est pas valide veuillez recommencer");
+    }
+  });
+});
+</script>
+</body>
+</html>
+</body>
+</html>
